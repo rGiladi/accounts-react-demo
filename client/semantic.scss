@@ -1,0 +1,37 @@
+
+#content {
+  min-height: 100vh;
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+
+  #accounts-wrapper {
+    width: 425px;
+    padding: 24px 32px 32px 32px;
+    background: #fff;
+    box-shadow: 0 1px 2px 0 rgba(34,36,38,.15);
+
+    &.semantic {
+      .header {
+        text-align: center;
+        font-size: 2em;
+        margin-bottom: 12px;
+      }
+
+      button {
+        width: 100%;
+        margin: 16px 0;
+      }
+
+      button.social-btn {
+        margin-top: 6px;
+        margin-bottom: 0;
+
+        &:last-of-type {
+          margin-bottom: 16px;
+        }
+      }
+    }
+  }
+}
