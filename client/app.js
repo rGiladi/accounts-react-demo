@@ -1,4 +1,5 @@
 import React, { Component, Fragment } from 'react'
+import { withTracker } from 'meteor/react-meteor-data'
 import { AccountsReact, AccountsReactComponent } from 'meteor/meteoreact:accounts'
 
 /* Components */
@@ -11,11 +12,14 @@ class App extends Component {
   }
 
   render () {
+    const { user } = this.props
+
     return (
       <Fragment>
         <Navbar
           items={this.navbar}
           activeItem={this.state.theme}
+          user={user}
         />
         <div id='content'>
           <div id='accounts-wrapper' className={this.state.theme}>
@@ -46,9 +50,20 @@ class App extends Component {
       }
     ],
     right: [
-      { key: 'logout', text: 'Logout' }
+      {
+        key: 'logout',
+        text: 'Logout',
+        onClick: () => {
+          AccountsReact.logout()
+        },
+        action: true
+      }
     ]
   }
 }
 
-export default App
+export default withTracker(() => {
+  return {
+    user: Meteor.user()
+  }
+})(App)
