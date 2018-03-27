@@ -1,0 +1,40 @@
+#accounts-wrapper.unstyled {
+
+  form {
+
+    input {
+      width: 100%;
+      padding: 8px;
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 2em;
+      margin-bottom: 12px;
+    }
+  }
+
+  button {
+    width: 100%;
+    margin: 16px 0;
+    padding: 8px;
+    border: none;
+  }
+
+  button.social-btn {
+    margin-top: 6px;
+    margin-bottom: 0;
+
+    &:last-of-type {
+      margin-bottom: 16px;
+    }
+
+    &.google {
+      background: #e0321c;
+    }
+
+    &.facebook {
+      background: #304d8a;
+    }
+  }
+}
