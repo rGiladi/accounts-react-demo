@@ -1,0 +1,44 @@
+@import "{}/client/theme/main";
+
+footer {
+  display: flex !important;
+  flex-flow: row;
+  position: fixed;
+  bottom: 0;
+  height: 48px;
+  width: 100%;
+  border-top: 1px solid #d9d7ce;
+
+  ul {
+    display: flex;
+    height: 100%;
+    margin: 0;
+    padding: 0 16px;
+
+    &.options {
+      margin-right: auto;
+    }
+
+    &.links {
+      margin-left: auto;
+    }
+
+    li {
+      margin: auto 0;
+      padding-right: 8px;
+      list-style: none;
+
+      &.icon {
+        font-size: 1.6em;
+
+        a {
+          color: initial;
+        }
+      }
+
+      & a.hide {
+        display: none;
+      }
+    }
+  }
+}

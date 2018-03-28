@@ -16,17 +16,15 @@ class Navbar extends Component {
 
     const {
       left,
-      right,
-      both
+      auth
     } = items
 
     const MenuFactory = this.MenuFactory
 
     return (
       <div className='baz navbar'>
-        <MenuFactory items={left}  clazz='left'  />
-        {user && <MenuFactory items={right} clazz='right' />}
-        <MenuFactory items={both}  clazz='both'  />
+        {!user && <MenuFactory items={left}       clazz='left'  />}
+        {user  && <MenuFactory items={auth.right} clazz='right' />}
       </div>
     )
   }
@@ -48,7 +46,7 @@ class Navbar extends Component {
 
   wrapClick = ({ key, onClick, action }) => {
     if (!action) {
-      this.setState({ activeItem: key })  
+      this.setState({ activeItem: key })
     }
     onClick()
   }

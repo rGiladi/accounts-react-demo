@@ -1,9 +1,18 @@
 import React, { Component, Fragment } from 'react'
+import { BrowserRouter as Router, Route } from 'react-router-dom'
 import { withTracker } from 'meteor/react-meteor-data'
-import { AccountsReact, AccountsReactComponent } from 'meteor/meteoreact:accounts'
+import { AccountsReact } from 'meteor/meteoreact:accounts'
 
-/* Components */
-import Navbar from './Navbar'
+
+/* Includes */
+
+import Navbar from './includes/Navbar'
+import Footer from './includes/Footer'
+
+/* Pages */
+
+import Home from './pages/Home'
+import Auth from './pages/Auth'
 
 class App extends Component {
 
@@ -12,7 +21,8 @@ class App extends Component {
   }
 
   render () {
-    const { user } = this.props
+    const { user }  = this.props
+    const { theme } = this.state
 
     return (
       <Fragment>
@@ -21,11 +31,26 @@ class App extends Component {
           activeItem={this.state.theme}
           user={user}
         />
-        <div id='content'>
-          <div id='accounts-wrapper' className={this.state.theme}>
-            <AccountsReactComponent key={this.state.theme} />
-          </div>
-        </div>
+        <Router>
+          <Fragment>
+
+            <div id='content'>
+              <Route exact path='/' render={props => (
+                <Home
+                  user={user}
+                  theme={theme}
+                  {...props}
+                />
+              )} />
+
+              <Auth
+                theme={theme}
+              />
+            </div>
+
+            <Route path='*' component={Footer} />
+          </Fragment>
+        </Router>
       </Fragment>
     )
   }
@@ -49,16 +74,34 @@ class App extends Component {
         }
       }
     ],
-    right: [
-      {
-        key: 'logout',
-        text: 'Logout',
-        onClick: () => {
-          AccountsReact.logout()
+    auth: {
+      right: [
+        {
+          key: 'logout',
+          text: 'Logout',
+          onClick: () => {
+            AccountsReact.logout()
+          },
+          action: true
+        }
+      ],
+      left: [
+        {
+          key: 'forgotPwd',
+          text: 'Forgot your password?',
+          onClick: () => {
+            //
+          }
         },
-        action: true
-      }
-    ]
+        {
+          key: 'changePwd',
+          text: 'Change you password',
+          onClick: () => {
+
+          }
+        }
+      ]
+    }
   }
 }
 

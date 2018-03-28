@@ -2,13 +2,20 @@
 
 .baz.navbar {
   display: flex;
-  justify-content: space-between;
-  height: 45px;
+  height: $navbar-height;
   width: 100%;
   padding: 0 16px;
   background: $navbar-background;
   border-bottom: 1px solid #D8D8D8;
   box-shadow: 0 1px 1px 0 rgba(140,140,140,.15);
+
+  .left {
+    margin-right: auto;
+  }
+
+  .right {
+    margin-left: auto;
+  }
 
   .item {
     display: inline-flex;
