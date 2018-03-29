@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { NavLink } from 'react-router-dom'
+import { AccountsReact } from 'meteor/meteoreact:accounts'
 
 class Footer extends Component {
 
@@ -9,7 +10,12 @@ class Footer extends Component {
     return (
       <footer>
         <ul className='options'>
-          {!loggedIn && <li><NavLink exact to='/sign-in' activeClassName='hide'>Try with react-router</NavLink></li>}
+          {!loggedIn && (
+            <li>
+              <NavLink exact to='/sign-in' activeClassName='hide' isActive={isAuthRoute}>
+                Try with react-router
+              </NavLink>
+            </li>)}
           {!loggedIn && <li><NavLink exact to='/' activeClassName='hide'>Try without react-router</NavLink></li>}
         </ul>
         <ul className='links'>
@@ -22,7 +28,11 @@ class Footer extends Component {
       </footer>
     )
   }
+}
 
+const isAuthRoute = (match, { pathname }) => {
+  const { mapStateToRoute } = AccountsReact.config
+  return Object.values(mapStateToRoute).find(route => route === pathname)
 }
 
 export default Footer
