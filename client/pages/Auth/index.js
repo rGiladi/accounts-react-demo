@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Redirect } from 'react-router'
 import { Route, Switch } from 'react-router-dom'
-import { AccountsReact, AccountsReactComponent } from 'meteor/meteoreact:accounts'
+import { AccountsReactComponent } from 'meteor/meteoreact:accounts'
 
 class Authentication extends Component {
 
@@ -13,17 +13,15 @@ class Authentication extends Component {
         <Route exact path='/sign-in'          component={arState} />
         <Route exact path='/sign-up'          component={arState} />
         <Route exact path='/forgot-password'  component={arState} />
-        <Route exact path='/reset-password/:token' component={arState} />
         <Route exact path='/change-password'  component={arState} />
+        <Route exact path='/reset-password/:token' component={arState} />
       </Switch>
     )
   }
 
   arState = ({ match, history }) => {
     const { theme } = this.props
-    const { mapStateToRoute } = AccountsReact.config
     const { path, params } = match
-    const state = Object.keys(mapStateToRoute).find(key => mapStateToRoute[key] === path)
 
     if (Meteor.userId() && path !== '/change-password') {
       return (<Redirect to='/' />)
@@ -33,7 +31,7 @@ class Authentication extends Component {
       <div id='accounts-wrapper' className={theme}>
         <AccountsReactComponent
           key={theme}
-          state={state}
+          route={path}
           history={history}
           token={params.token}
         />
