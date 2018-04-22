@@ -2,13 +2,12 @@
   "name": "accounts-react",
   "private": true,
   "scripts": {
-    "start": "meteor run"
+    "start": "meteor run --settings settings.json"
   },
   "dependencies": {
     "@babel/runtime": "^7.0.0-beta.36",
     "babel-eslint": "^8.2.2",
     "bcrypt": "^1.0.3",
-    "deepmerge": "^2.1.0",
     "eslint": "^4.19.1",
     "eslint-plugin-import": "^2.9.0",
     "eslint-plugin-jsx-a11y": "^6.0.3",
