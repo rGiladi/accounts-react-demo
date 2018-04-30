@@ -5,19 +5,22 @@
     "start": "meteor run --settings settings.json"
   },
   "dependencies": {
-    "@babel/runtime": "^7.0.0-beta.36",
-    "babel-eslint": "^8.2.2",
+    "@babel/runtime": "^7.0.0-beta.46",
+    "babel-eslint": "^8.2.3",
     "bcrypt": "^1.0.3",
     "eslint": "^4.19.1",
-    "eslint-plugin-import": "^2.9.0",
+    "eslint-plugin-import": "^2.11.0",
     "eslint-plugin-jsx-a11y": "^6.0.3",
     "eslint-plugin-react": "^7.7.0",
     "meteor-node-stubs": "^0.3.2",
-    "react": "^16.2.0",
-    "react-dom": "^16.2.0",
+    "react": "^16.3.2",
+    "react-dom": "^16.3.2",
     "react-highlight": "^0.12.0",
     "react-router": "^4.2.0",
     "react-router-dom": "^4.2.2",
-    "semantic-ui-react": "^0.79.0"
+    "semantic-ui-react": "^0.79.1"
+  },
+  "devDependencies": {
+    "deepmerge": "^2.1.0"
   }
 }
